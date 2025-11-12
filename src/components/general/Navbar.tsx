@@ -44,11 +44,29 @@ const Navbar: React.FC = () => {
   };
 
   // Links de navegação
-  const navItems: Array<{ name: string; path: string; submenu?: Array<{ name: string; path: string }> }> = [
+  const navItems: Array<{ name: string; path: string; submenu?: Array<{ name: string; path: string; divider?: boolean }> }> = [
     { name: 'Início', path: '/' },
+    {
+      name: 'Versões',
+      path: '#',
+      submenu: [
+        { name: '— Home —', path: '#', divider: true },
+        { name: 'Home 1', path: '/' },
+        { name: 'Home 2', path: '/home2' },
+        { name: 'Home 3', path: '/home3' },
+        { name: 'Home 7', path: '/home7' },
+        { name: 'Home 8', path: '/home8' },
+        { name: 'Home 9', path: '/home9' },
+        { name: '— Sobre —', path: '#', divider: true },
+        { name: 'About 1', path: '/about' },
+        { name: 'About 2', path: '/about2' },
+        { name: 'About 3', path: '/about3' },
+        { name: 'About 9', path: '/about9' },
+      ]
+    },
     { name: 'Sobre', path: '/about' },
-    { 
-      name: 'Serviços', 
+    {
+      name: 'Serviços',
       path: '/services',
       submenu: [
         { name: 'SEO Estratégico', path: '/services/seo-estrategico' },
@@ -144,18 +162,27 @@ const Navbar: React.FC = () => {
                   {link.submenu && (
                     <div className="absolute left-0 mt-2 w-64 rounded-xl bg-background/90 backdrop-blur-lg border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                       <div className="p-2">
-                        {link.submenu.map((sublink) => (
-                          <Link
-                            key={sublink.name}
-                            to={sublink.path}
-                            className={`block text-sm px-4 py-3 rounded-lg transition-colors duration-200 ${
-                              isActive(sublink.path)
-                                ? 'bg-primary/20 text-primary'
-                                : 'text-white/80 hover:bg-white/5 hover:text-primary'
-                            }`}
-                          >
-                            {sublink.name}
-                          </Link>
+                        {link.submenu.map((sublink, idx) => (
+                          sublink.divider ? (
+                            <div
+                              key={`${sublink.name}-${idx}`}
+                              className="text-xs px-4 py-2 text-primary/60 font-semibold uppercase tracking-wider mt-2 first:mt-0"
+                            >
+                              {sublink.name}
+                            </div>
+                          ) : (
+                            <Link
+                              key={sublink.name}
+                              to={sublink.path}
+                              className={`block text-sm px-4 py-3 rounded-lg transition-colors duration-200 ${
+                                isActive(sublink.path)
+                                  ? 'bg-primary/20 text-primary'
+                                  : 'text-white/80 hover:bg-white/5 hover:text-primary'
+                              }`}
+                            >
+                              {sublink.name}
+                            </Link>
+                          )
                         ))}
                       </div>
                     </div>
@@ -243,19 +270,28 @@ const Navbar: React.FC = () => {
                       
                       {link.submenu && (
                         <div className="mt-2 ml-4 space-y-1">
-                          {link.submenu.map((sublink) => (
-                            <Link
-                              key={sublink.name}
-                              to={sublink.path}
-                              className={`block text-sm py-2 px-3 rounded-lg ${
-                                isActive(sublink.path)
-                                  ? 'bg-primary/20 text-primary'
-                                  : 'text-white/70 hover:bg-white/5 hover:text-primary'
-                              }`}
-                              onClick={() => setMobileMenuOpen(false)}
-                            >
-                              {sublink.name}
-                            </Link>
+                          {link.submenu.map((sublink, idx) => (
+                            sublink.divider ? (
+                              <div
+                                key={`${sublink.name}-${idx}`}
+                                className="text-xs px-3 py-2 text-primary/60 font-semibold uppercase tracking-wider mt-2 first:mt-0"
+                              >
+                                {sublink.name}
+                              </div>
+                            ) : (
+                              <Link
+                                key={sublink.name}
+                                to={sublink.path}
+                                className={`block text-sm py-2 px-3 rounded-lg ${
+                                  isActive(sublink.path)
+                                    ? 'bg-primary/20 text-primary'
+                                    : 'text-white/70 hover:bg-white/5 hover:text-primary'
+                                }`}
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {sublink.name}
+                              </Link>
+                            )
                           ))}
                         </div>
                       )}

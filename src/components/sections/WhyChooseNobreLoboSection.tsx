@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import SectionHeader from '../general/SectionHeader'
-import { Target, TrendingUp, Zap, Shield, Users, Award, CheckCircle, Star } from 'lucide-react'
+import { Target, TrendingUp, Zap, Shield, Users, Award, CheckCircle } from 'lucide-react'
 
 interface WhyChooseNobreLoboSectionProps {
   id?: string;
@@ -80,39 +80,9 @@ const WhyChooseNobreLoboSection: React.FC<WhyChooseNobreLoboSectionProps> = ({
     { value: "24/7", label: "Suporte", sublabel: "quando você precisa" }
   ];
 
-  // Diferenciais únicos
-  const uniqueFeatures = [
-    {
-      icon: <CheckCircle className="w-6 h-6" />,
-      title: "Metodologia Proprietária",
-      description: "Desenvolvemos nossa própria metodologia baseada em anos de experiência e resultados comprovados."
-    },
-    {
-      icon: <Star className="w-6 h-6" />,
-      title: "Atendimento Premium",
-      description: "Cada cliente recebe atenção personalizada e acesso direto aos nossos especialistas."
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Resultados Garantidos",
-      description: "Comprometemo-nos com resultados mensuráveis e crescimento sustentável do seu negócio."
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Parceria de Longo Prazo",
-      description: "Não somos apenas fornecedores, somos parceiros estratégicos na sua jornada de crescimento."
-    }
-  ];
-
   return (
-    <section ref={sectionRef} id={id} className="py-28 relative overflow-hidden">
-      {/* Background com gradientes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/95">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-primary/5 rounded-full filter blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-primary/3 rounded-full filter blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-
-      <motion.div 
+    <section ref={sectionRef} id={id} className="py-16 md:py-20 relative overflow-hidden">
+      <motion.div
         className="container mx-auto px-4 relative z-10"
         style={{ opacity, y }}
       >
@@ -191,47 +161,6 @@ const WhyChooseNobreLoboSection: React.FC<WhyChooseNobreLoboSectionProps> = ({
             </motion.div>
           ))}
         </div>
-
-        {/* Diferenciais únicos */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 lg:p-12"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-gilroy font-bold text-white mb-4">
-              O Que Nos Torna <span className="text-primary">Únicos</span>
-            </h3>
-            <p className="text-white/70 text-xl max-w-3xl mx-auto">
-              Descubra os diferenciais que fazem da Nobre Lobo a escolha certa para o seu projeto.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {uniqueFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                  {feature.icon}
-                </div>
-                <h4 className="text-xl font-gilroy font-bold text-white mb-3">
-                  {feature.title}
-                </h4>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Call to Action */}
         <motion.div

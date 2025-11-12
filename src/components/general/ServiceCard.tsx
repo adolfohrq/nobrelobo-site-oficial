@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { slugify } from '@/utils/slugify';
 
 interface ServiceCardProps {
   title: string;
@@ -10,19 +11,8 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, index }) => {
-  // Função para converter o título em um slug para URL
-  const getServiceSlug = (title: string) => {
-    return title
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '') // Remove acentos
-      .replace(/[^\w\s-]/g, '') // Remove caracteres especiais
-      .replace(/\s+/g, '-') // Substitui espaços por hífens
-      .replace(/--+/g, '-'); // Remove hífens duplicados
-  };
-
-  // Gera o slug para o serviço
-  const serviceSlug = getServiceSlug(title);
+  // Gera o slug para o serviço usando o utilitário
+  const serviceSlug = slugify(title);
 
   return (
     <motion.div

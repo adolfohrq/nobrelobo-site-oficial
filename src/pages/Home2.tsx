@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Layout from '../components/general/Layout'
+import SEO from '../components/general/SEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Button } from '../components/ui/button'
@@ -73,6 +74,11 @@ const Home2: React.FC = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Transforme sua Marca com Marketing Digital"
+        description="Soluções completas de marketing digital: Design, Social Media, SEO, Tráfego Pago e Desenvolvimento Web. 350+ projetos entregues, 98% de satisfação."
+        keywords="transformação digital, branding, marketing estratégico, ROI, crescimento digital"
+      />
       <div ref={containerRef}>
         {/* Hero Section - Moderno e Impactante */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

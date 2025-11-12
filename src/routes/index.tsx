@@ -3,9 +3,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from '../pages/Home';
 import Home2 from '../pages/Home2';
 import Home3 from '../pages/Home3';
+import Home7 from '../pages/Home7';
+import Home8 from '../pages/Home8';
+import Home9 from '../pages/Home9';
 import About from '../pages/About';
 import About2 from '../pages/About2';
 import About3 from '../pages/About3';
+import About4 from '../pages/About4';
+import About9 from '../pages/About9';
 import Portfolio from '../pages/Portfolio';
 import Blog from '../pages/Blog';
 import BlogArticle from '../pages/BlogArticle';
@@ -93,6 +98,18 @@ const router = createBrowserRouter([
     element: <Home3 />
   },
   {
+    path: '/home7',
+    element: <Home7 />
+  },
+  {
+    path: '/home8',
+    element: <Home8 />
+  },
+  {
+    path: '/home9',
+    element: <Home9 />
+  },
+  {
     path: '/about',
     element: <About />
   },
@@ -103,6 +120,14 @@ const router = createBrowserRouter([
   {
     path: '/about3',
     element: <About3 />
+  },
+  {
+    path: '/about4',
+    element: <About4 />
+  },
+  {
+    path: '/about9',
+    element: <About9 />
   },
   {
     path: '/services',

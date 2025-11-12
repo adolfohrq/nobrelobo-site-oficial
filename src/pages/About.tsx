@@ -4,9 +4,12 @@ import { motion } from 'framer-motion';
 import SectionHeader from '../components/general/SectionHeader';
 import ContactSection from '../components/sections/ContactSection';
 import OurProcessSection from '../components/sections/OurProcessSection';
-import HeroPages from '../components/general/HeroPages';    
+import HeroPages from '../components/general/HeroPages';
 import MissionSection from '../components/sections/MissionSection';
 import LeaderSection from '../components/sections/LeaderSection';
+import ClientTypesSection from '../components/sections/ClientTypesSection';
+import ValuesSection from '../components/sections/ValuesSection';
+import SectionDivider from '../components/general/SectionDivider';
 
 
 const About: React.FC = () => {
@@ -94,9 +97,17 @@ const About: React.FC = () => {
       {/* Seção do Líder */}
       <LeaderSection />
 
-      <OurProcessSection />
-      
+      <SectionDivider />
 
+      <ValuesSection />
+
+      <SectionDivider />
+
+      <OurProcessSection />
+
+      <SectionDivider />
+
+      <ClientTypesSection />
 
     </Layout>
   );

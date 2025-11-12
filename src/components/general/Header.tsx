@@ -35,9 +35,27 @@ const Header: React.FC = () => {
   // Items de navegação
   const navItems = [
     { name: 'Início', path: '/' },
+    {
+      name: 'Versões',
+      path: '#',
+      submenu: [
+        { name: '— Home —', path: '#', divider: true },
+        { name: 'Home 1', path: '/' },
+        { name: 'Home 2', path: '/home2' },
+        { name: 'Home 3', path: '/home3' },
+        { name: 'Home 7', path: '/home7' },
+        { name: 'Home 8', path: '/home8' },
+        { name: 'Home 9', path: '/home9' },
+        { name: '— Sobre —', path: '#', divider: true },
+        { name: 'About 1', path: '/about' },
+        { name: 'About 2', path: '/about2' },
+        { name: 'About 3', path: '/about3' },
+        { name: 'About 9', path: '/about9' },
+      ]
+    },
     { name: 'Sobre', path: '/about' },
-    { 
-      name: 'Serviços', 
+    {
+      name: 'Serviços',
       path: '/services',
       submenu: [
         { name: 'SEO Estratégico', path: '/services/seo-estrategico' },
@@ -173,22 +191,31 @@ const Header: React.FC = () => {
                           >
                             {/* Glow interno */}
                             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-                            
-                            {item.submenu!.map((subitem) => (
-                              <Link
-                                key={subitem.name}
-                                to={subitem.path}
-                                className={`block px-4 py-3 text-sm transition-all duration-200 relative group/sub ${
-                                  isActive(subitem.path)
-                                    ? 'text-primary bg-primary/5'
-                                    : 'text-white/70 hover:text-white hover:bg-white/5'
-                                }`}
-                              >
-                                <span className="relative z-10">{subitem.name}</span>
-                                <motion.div
-                                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-primary group-hover/sub:h-full transition-all duration-300"
-                                />
-                              </Link>
+
+                            {item.submenu!.map((subitem, idx) => (
+                              (subitem as any).divider ? (
+                                <div
+                                  key={`${subitem.name}-${idx}`}
+                                  className="text-xs px-4 py-2 text-primary/60 font-semibold uppercase tracking-wider mt-2 first:mt-0"
+                                >
+                                  {subitem.name}
+                                </div>
+                              ) : (
+                                <Link
+                                  key={subitem.name}
+                                  to={subitem.path}
+                                  className={`block px-4 py-3 text-sm transition-all duration-200 relative group/sub ${
+                                    isActive(subitem.path)
+                                      ? 'text-primary bg-primary/5'
+                                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                                  }`}
+                                >
+                                  <span className="relative z-10">{subitem.name}</span>
+                                  <motion.div
+                                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-primary group-hover/sub:h-full transition-all duration-300"
+                                  />
+                                </Link>
+                              )
                             ))}
                           </motion.div>
                         )}
@@ -337,19 +364,28 @@ const Header: React.FC = () => {
                       {/* Submenu */}
                       {hasSubmenu && (
                         <div className="mt-1.5 ml-3 space-y-1">
-                          {item.submenu!.map((subitem) => (
-                            <Link
-                              key={subitem.name}
-                              to={subitem.path}
-                              onClick={() => setMobileMenuOpen(false)}
-                              className={`block px-4 py-2 rounded-lg text-xs font-medium transition-colors ${
-                                isActive(subitem.path)
-                                  ? 'text-primary bg-primary/5'
-                                  : 'text-white/60 hover:text-white hover:bg-white/[0.03]'
-                              }`}
-                            >
-                              • {subitem.name}
-                            </Link>
+                          {item.submenu!.map((subitem, idx) => (
+                            (subitem as any).divider ? (
+                              <div
+                                key={`${subitem.name}-${idx}`}
+                                className="text-xs px-4 py-2 text-primary/60 font-semibold uppercase tracking-wider mt-2 first:mt-0"
+                              >
+                                {subitem.name}
+                              </div>
+                            ) : (
+                              <Link
+                                key={subitem.name}
+                                to={subitem.path}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={`block px-4 py-2 rounded-lg text-xs font-medium transition-colors ${
+                                  isActive(subitem.path)
+                                    ? 'text-primary bg-primary/5'
+                                    : 'text-white/60 hover:text-white hover:bg-white/[0.03]'
+                                }`}
+                              >
+                                • {subitem.name}
+                              </Link>
+                            )
                           ))}
                         </div>
                       )}

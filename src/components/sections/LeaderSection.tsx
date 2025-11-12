@@ -6,23 +6,23 @@ import { Users } from 'lucide-react';
 const LeaderSection: React.FC = () => {
   // Referência para animação de scroll
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   // Efeitos de scroll
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-  
+
   const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [0, 1, 1]);
   const y = useTransform(scrollYProgress, [0, 0.2, 1], [50, 0, 0]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-10 overflow-hidden"
       id="lideranca"
     >
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4 relative z-10"
         style={{ opacity, y }}
       >
@@ -45,7 +45,7 @@ const LeaderSection: React.FC = () => {
         <div className="max-w-5xl mx-auto mt-20">
           {/* Conteúdo Central Minimalista */}
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-            
+
             {/* Imagem - 2 colunas */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ const LeaderSection: React.FC = () => {
 
               {/* Descrição curta */}
               <p className="text-white/80 text-lg leading-relaxed">
-                Fundador da Nobre Lobo, combina criatividade e estratégia para criar 
+                Fundador da Nobre Lobo, combina criatividade e estratégia para criar
                 soluções digitais que geram resultados mensuráveis e transformam negócios.
               </p>
             </motion.div>
