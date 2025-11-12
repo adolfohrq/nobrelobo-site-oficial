@@ -338,7 +338,7 @@ const About4: React.FC = () => {
       <HeroPages
         title="A História por Trás da Nobre Lobo"
         subtitle="Mais de uma década transformando visões em realidade digital. Somos apaixonados por criar experiências que vendem."
-        image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&h=600&fit=crop"
+        backgroundImage="/lobo-hero-about.jpg"
       />
 
       {/* SEÇÃO: MISSÃO, VISÃO, VALORES */}

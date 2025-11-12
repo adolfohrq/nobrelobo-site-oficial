@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import SectionHeader from '../general/SectionHeader'
-import { Target, Users, Lightbulb, Heart, Zap, Shield, CheckCircle2 } from 'lucide-react'
+import { Target, Users, Lightbulb, Heart, Zap, Shield, CheckCircle2, LucideIcon } from 'lucide-react'
 
 interface ValuesSectionProps {
   id?: string;
@@ -10,7 +10,7 @@ interface ValuesSectionProps {
 }
 
 interface ValueItem {
-  icon: React.ComponentType<{ className: string }>;
+  icon: LucideIcon;
   title: string;
   description: string;
   color: string;
